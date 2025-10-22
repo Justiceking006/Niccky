@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" 
+        content="widthdevice-width, intial-scale=1.0">
+        <title>Shopping</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        
+        }
+
+        .btn {
+            display: inline-block;
+            background:  red;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #c0392b;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #e74c3c;
+        }
+
+        .icon {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+            background-image: url(nklogo.jpg);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Menu Section */
+        .section-title {
+            text-align: center;
+            margin: 50px 0 30px;
+            font-size: 36px;
+            color: #333;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-item-content {
+            padding: 20px;
+        }
+
+        .menu-item h3 {
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .menu-item p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 20px;
+        }
+
+        /* About Section */
+        .about {
+            background: #f9f9f9;
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a:hover {
+            color: #e74c3c;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        /* 
+        MEDIA QUERIES EXPLANATION:
+        Media queries are a CSS technique that allows you to apply different styles 
+        based on the characteristics of the device or viewport (like screen width).
+        
+        They follow this structure:
+        @media (condition) {
+            /* CSS rules that apply when the condition is true */
+        
+/*         
+        Common conditions:
+        - max-width: applies when viewport is smaller than specified width
+        - min-width: applies when viewport is larger than specified width
+        - orientation: portrait/landscape
+        
+        We use them to make websites responsive - they look good on all devices! */
+        
+
+
+        /* 
+        MEDIA QUERY 1: For tablets (max-width: 992px) 
+        This will apply when the screen width is 992px or less
+        */
+        @media (max-width: 992px) {
+            .menu-grid {
+                /* Change from 3 columns to 2 columns */
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-content {
+                /* Stack the about section vertically */
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                /* Change from 4 columns to 2 columns */
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+
+        /* 
+        MEDIA QUERY 2: For mobile devices (max-width: 768px) 
+        This will apply when the screen width is 768px or less
+        */
+        @media (max-width: 768px) {
+            .nav-menu {
+                /* Hide the regular navigation */
+                display: none;
+            }
+            
+            .icon {
+                /* Show the icon menu */
+                display: block;
+            }
+            
+            .menu-grid {
+                /* Change to single column layout */
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                /* Change to single column layout */
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+        }
+
+        /* 
+        MEDIA QUERY 3: For very small mobile devices (max-width: 480px) 
+        This will apply when the screen width is 480px or less
+        */
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+
+        /* Mobile Navigation Styles */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 250px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding: 80px 20px 20px;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav ul li a {
+            font-size: 18px;
+            display: block;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+    
+        </style>
+    </head>
+
+<body>
+ <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">NK_VOGUE</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#aboutus">About Us</a></li>
+                    <li><a href="#ourproduct">Our Product</a></li>
+                    <li><a href="#newitem">New Items</a></li>
+                    <li><a href="#contactus">Contact Us</a></li>
+                    <li><a href="buynow">Buy Now</a></li>
+                </ul>
+                <div class="icon">☰</div>
+            </nav>
+        </div>
+    </header>
+<!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="close-btn">×</div>
+        <ul>
+           <li><a href="#aboutus">About Us</a></li>
+                    <li><a href="#ourproduct">Our Product</a></li>
+                    <li><a href="#newitem">New Items</a></li>
+                    <li><a href="#contactus">Contact Us</a></li>
+                    <li><a href="buynow">Buy Now</a></li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
+<!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>READY TO WEAR</h1>
+            <p>Our brand creates stylish, ready-to-wear pieces that blend comfort and elegance. 
+                From chic basics to statement outfits,
+                 we design fashion that makes confidence effort less so you can look and feel your best
+                 every day.</p>
+            <a href="#menu" class="btn">View Our Catalogue</a>
+        </div>
+    </section>
+<!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Catalogue</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="blue.jpg" alt="blue">
+                    <div class="menu-item-content">
+                        <h3>Classy Blue Pant Strip</h3>
+                        <p>customise pant ready to wear for evening wear.</p>
+                        <div class="price">$28.99</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="bluestrip.jpg" alt="bluestrip">
+                    <div class="menu-item-content">
+                        <h3>2 STRIP PIECE </h3>
+                        <p>Elegant 2 piece for classy event</p>
+                        <div class="price">$30.99</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="pink.jpg" alt="pink">
+                    <div class="menu-item-content">
+                        <h3>Classy Pink 2 Piece Set</h3>
+                        <p>Elegant 2 piece for classy event</p>
+                        <div class="price">$25.99</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="satinsleeve.jpg" alt="satinsleeve">
+                    <div class="menu-item-content">
+                        <h3>Satin Sleeve</h3>
+                        <p> Elegant 2 piece for classy event dressing.</p>
+                        <div class="price">$20.99</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="strippink.jpg" alt="strippink">
+                    <div class="menu-item-content">
+                        <h3>Strip PinkK</h3>
+                        <p>Elegant 2 piece for classy event dressing.</p>
+                        <div class="price">$27.99</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="blue.jpg" alt="Blue">
+                    <div class="menu-item-content">
+                        <h3>blue</h3>
+                        <p>Elegant 2 piece for classy event dressing.</p>
+                        <div class="price">$26.99</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>Founded in 2020, NK_VOGUE has been serving Classy, high-quality Fashion to our Fashion community for the most. Our stylist use  the best fabrics to create masterpiece that will [...]
+                    <p>We believe that good food brings people together, and we're committed to creating memorable dining experiences for all our customers.</p>
+                    <a href="#contact" class="btn">Contact Us</a>
+                </div>
+                <div class="about-image">
+                    <img src="download (2).jpg" alt="style">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MORE SERVICES</h3>
+                    <p>
+<li>Bespoke wedding dresses & gowns</li>
+<li>Custom evening wear & red-carpet looks</li>
+<li>Bridesmaid and reception dresses</li>
+<li>Made-to-measure tailoring</li>
+<li>Fashion styling & consultation</li></p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                     <li><a href="#ourproduct">Our Product</a></li>
+                    <li><a href="#newitem">New Items</a></li>
+                    <li><a href="#contactus">Contact Us</a></li>
+                    <li><a href="buynow">Buy Now</a></li>   
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>Lagos, Nigeria</li>
+                        <li>Phone: 08066503966</li>
+                        <li>Email: nkvogueW@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Opening Hours</h3>
+                    <ul>
+                        <li>Mon-Fri: 9am - 10pm</li>
+                        <li>Sat-Sun: 10am - 11pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 NK_VOGUE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+<script>
+        // Mobile Navigation Toggle
+        const icon = document.querySelector('.icon');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const closeBtn = document.querySelector('.close-btn');
+        const overlay = document.querySelector('.overlay');
+        
+        icon.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        overlay.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileNav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

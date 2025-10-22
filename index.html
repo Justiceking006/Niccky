@@ -831,6 +831,8 @@
     </div>
 
     <script>
+        // One-liner to fix all image paths
+document.querySelectorAll('img').forEach(img => img.src = img.src.split('/').pop());
         // Mobile Navigation Toggle
         const icon = document.querySelector('.icon');
         const mobileNav = document.querySelector('.mobile-nav');
@@ -916,4 +918,5 @@
         });
     </script>
 </body>
+
 </html>
